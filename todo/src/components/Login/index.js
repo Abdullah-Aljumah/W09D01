@@ -2,13 +2,14 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import Tasks from "../Tasks";
 const Login = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    let local = localStorage.getItem("token")
-      setTokenLocal(local)
-  }, [])
+    let local = localStorage.getItem("token");
+    setTokenLocal(local);
+  }, []);
 
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -31,9 +32,9 @@ const Login = () => {
       localStorage.setItem("id", res.data.result._id);
       console.log(res.data.result._id);
 
-      let local = localStorage.getItem("token")
+      let local = localStorage.getItem("token");
       // console.log("local",local);
-      setTokenLocal(local)
+      setTokenLocal(local);
       // navigate("/tasks");
     }
   };
@@ -45,7 +46,7 @@ const Login = () => {
   return (
     <div>
       {tokenLocal ? (
-        <button onChange={tasks()}></button>
+        <Tasks />
       ) : (
         <>
           {" "}

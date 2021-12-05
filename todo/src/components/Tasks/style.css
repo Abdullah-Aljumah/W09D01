@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+  font-size: 12px;
+}
+
+.inpt2 {
+  width: 5rem;
+  font-size: 9px;
+  height: 30px;
+  width: 4rem;
+  margin-top: 2px;
+}
+
+.inpt {
+  height: 30px;
+  margin: 0 5px;
+}
+
+.task {
+  padding: 2%;
+  width: 70vh;
+}
+
+.task h1 {
+  font-size: 20px;
+}
+
+.cont {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.75);
+  background-color: rgba(128, 128, 128, 0.136);
+}
+
+#newTask {
+    width: max-content;
+}
