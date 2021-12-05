@@ -2,6 +2,8 @@ import React from "react";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Tasks from "./components/Tasks";
+import "./App.css"
+
 import { Routes, Route } from "react-router";
 function App() {
   return (

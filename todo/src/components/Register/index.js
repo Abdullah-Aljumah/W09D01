@@ -35,8 +35,9 @@ const Register = () => {
         icon: "error",
         title: "Oops...",
         text: " email alerady exists",
-      });    } else {
-        // eslint-disable-next-line
+      });
+    } else {
+      // eslint-disable-next-line
       const res = await axios.post(
         `${process.env.REACT_APP_BASE_URL}/resgister`,
         {
@@ -52,7 +53,7 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div className="login">
       <h1>Register </h1>
 
       <input
@@ -71,7 +72,12 @@ const Register = () => {
           setPassword(e.target.value);
         }}
       />
-      <input type="submit" value="Register" onClick={register} />
+      <input
+        type="submit"
+        value="Register"
+        className="btn btn-primary"
+        onClick={register}
+      />
       <p onClick={login}>Already have an account?</p>
     </div>
   );

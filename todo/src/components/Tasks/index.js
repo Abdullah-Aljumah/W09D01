@@ -11,7 +11,9 @@ const Tasks = () => {
 
   const [btn1, setBtn1] = useState(true);
   const [showHide, setShowHide] = useState(false);
+  // eslint-disable-next-line
   const [adminTasks, setAdminTasks] = useState([]);
+    // eslint-disable-next-line
   const [adminState, setAdminState] = useState(false);
 
   const getId = () => {

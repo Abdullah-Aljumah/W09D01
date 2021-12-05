@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import Tasks from "../Tasks";
+import "./style.css"
 const Login = () => {
   // eslint-disable-next-line
   const [users, setUsers] = useState([]);
@@ -28,11 +29,9 @@ const Login = () => {
       password: password,
     });
     if (res) {
-      console.log(res.data.result.role);
       localStorage.setItem("role", res.data.result.role);
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("id", res.data.result._id);
-      console.log(res.data.result._id);
 
       let local = localStorage.getItem("token");
       setTokenLocal(local);
@@ -40,7 +39,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="login">
       {tokenLocal ? (
         <Tasks />
       ) : (
