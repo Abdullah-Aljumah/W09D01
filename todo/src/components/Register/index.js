@@ -8,6 +8,7 @@ const Register = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // eslint-disable-next-line
   const [role, setRole] = useState("61a5f3da99ca3c5064ba5c6d");
   const [users, setUsers] = useState([]);
 
@@ -22,7 +23,9 @@ const Register = () => {
 
   const register = async () => {
     let check = false;
+    // eslint-disable-next-line
     users.map((item) => {
+      // eslint-disable-next-line
       if (item.email == email) {
         check = true;
       }
@@ -33,7 +36,7 @@ const Register = () => {
         title: "Oops...",
         text: " email alerady exists",
       });    } else {
-      console.log("HERE");
+        // eslint-disable-next-line
       const res = await axios.post(
         `${process.env.REACT_APP_BASE_URL}/resgister`,
         {

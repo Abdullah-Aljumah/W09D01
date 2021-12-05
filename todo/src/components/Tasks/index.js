@@ -1,11 +1,9 @@
 import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
 import "./style.css";
 
 const Tasks = () => {
-  const navigate = useNavigate();
   const [id, setId] = useState("");
   const [tasks, setTasks] = useState([]);
   const [token, setToken] = useState("");
@@ -13,6 +11,8 @@ const Tasks = () => {
 
   const [btn1, setBtn1] = useState(true);
   const [showHide, setShowHide] = useState(false);
+  const [adminTasks, setAdminTasks] = useState([]);
+  const [adminState, setAdminState] = useState(false);
 
   const getId = () => {
     const id = localStorage.getItem("id");
@@ -27,6 +27,7 @@ const Tasks = () => {
 
   useEffect(() => {
     getTasks();
+    // eslint-disable-next-line
   }, [id]);
 
   const getTasks = async () => {
@@ -39,19 +40,36 @@ const Tasks = () => {
     setTasks(res.data);
   };
 
-  const deleteTask = async (idTask) => {
+  const deleteTask = async (_id) => {
+    // eslint-disable-next-line
     let deleteTask = await axios.delete(
-      `${process.env.REACT_APP_BASE_URL}/deleteTask/${idTask}`,
+      `${process.env.REACT_APP_BASE_URL}/deleteTask/${_id}`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
     getTasks();
+    getTasksAdmin();
   };
+
+  const getTasksAdmin = async () => {
+    // eslint-disable-next-line
+    let res = await axios.get(`${process.env.REACT_APP_BASE_URL}/tasks`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    console.log("adminTask", res);
+    setTasks(res.data);
+  };
+
+  useEffect(() => {
+    getTasksAdmin();
+    // eslint-disable-next-line
+  }, [id]);
 
   const newTask = async (e) => {
     e.preventDefault();
     console.log(e.target[0].value);
+    // eslint-disable-next-line
     let res = await axios.post(
       `${process.env.REACT_APP_BASE_URL}/newTask/${id}`,
       { task: e.target[0].value },
@@ -65,6 +83,7 @@ const Tasks = () => {
 
   const updateTask = async (e, idTask) => {
     e.preventDefault();
+    // eslint-disable-next-line
     let newTask = await axios.put(
       `${process.env.REACT_APP_BASE_URL}/upadteVal/${idTask}`,
       { task: edit },
